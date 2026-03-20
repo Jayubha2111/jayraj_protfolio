@@ -1,6 +1,7 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import { MapPin, GraduationCap, Building2, Users, Mail } from "lucide-react";
 import { personalInfo } from "@/data/index";
 import SectionWrapper from "@/components/ui/SectionWrapper";
@@ -67,17 +68,13 @@ export default function About() {
               >
                 {/* Decorative grid inside */}
                 <div className="absolute inset-0 bg-grid opacity-30" />
-                {/* Center monogram */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <div
-                    className="text-6xl font-black mb-3 gradient-text"
-                  >
-                    JJ
-                  </div>
-                  <div className="text-sm font-mono" style={{ color: "#555" }}>
-                    Software Engineer
-                  </div>
-                </div>
+                {/* Profile image */}
+                <Image
+                  src={personalInfo.profileImage}
+                  alt={personalInfo.name}
+                  fill
+                  className="object-contain"
+                />
                 {/* Green corner accent */}
                 <div
                   className="absolute top-0 right-0 w-24 h-24"

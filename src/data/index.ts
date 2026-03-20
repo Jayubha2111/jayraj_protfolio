@@ -16,7 +16,7 @@ export const personalInfo = {
   availableFor: "Full-time & Freelance Opportunities",
   university: "LJ University",
   connections: "500+",
-  profileImage: "/images/profile.jpg",
+  profileImage: "/jayubha.jpeg",
   resumeLink: "/Jayrajsinh.pdf",
 };
 
