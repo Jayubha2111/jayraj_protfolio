@@ -19,6 +19,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [serverPreview, setServerPreview] = useState<{ main?: string; reply?: string } | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -29,12 +30,32 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
-    // Simulate send (replace with real API call)
-    await new Promise((r) => setTimeout(r, 1500));
-    setSending(false);
-    setSent(true);
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    setTimeout(() => setSent(false), 4000);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const json = await res.json();
+      if (!res.ok) throw new Error(json?.error || "Failed to send message");
+
+      setSent(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      // Store preview URLs from server (if any) so UI can show them
+      if (json?.previewUrlMain || json?.previewUrlReply) {
+        setServerPreview({ main: json.previewUrlMain, reply: json.previewUrlReply });
+      } else {
+        setServerPreview(null);
+      }
+      setTimeout(() => setSent(false), 4000);
+    } catch (err: any) {
+      console.error("Send error:", err);
+      // Simple inline error feedback — you can replace with a toast
+      alert(err?.message || "Unable to send message. Check server logs or env configuration.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputClass =
@@ -269,6 +290,31 @@ export default function Contact() {
                 )}
               </motion.button>
             </form>
+
+            {/* Success panel (styled) shown after send — keeps consistent theme */}
+            {sent && (
+              <div className="mt-6 p-4 rounded-xl" style={{ background: "linear-gradient(90deg,#0b0b0b,#0f0f0f)", border: "1px solid #1c1c1c" }}>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ background: "linear-gradient(180deg,#8B5CF6,#EC4899)", color: "#050505" }}>
+                    ✓
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold" style={{ color: "#f0f0f0" }}>Message sent</div>
+                    <div className="text-xs mt-1" style={{ color: "#888" }}>Thanks — I received your message and will reply soon.</div>
+                    {serverPreview && (serverPreview.main || serverPreview.reply) && (
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {serverPreview.main && (
+                          <a href={serverPreview.main} target="_blank" rel="noreferrer" className="text-xs px-3 py-2 rounded-full" style={{ backgroundColor: "#111", border: "1px solid #1c1c1c", color: "#8B5CF6" }}>Preview (owner)</a>
+                        )}
+                        {serverPreview.reply && (
+                          <a href={serverPreview.reply} target="_blank" rel="noreferrer" className="text-xs px-3 py-2 rounded-full" style={{ backgroundColor: "#111", border: "1px solid #1c1c1c", color: "#8B5CF6" }}>Preview (you)</a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
           </motion.div>
         </div>
       </div>

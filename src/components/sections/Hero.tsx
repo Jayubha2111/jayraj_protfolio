@@ -90,7 +90,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-x-hidden"
       style={{ backgroundColor: "#050505" }}
     >
       {/* Grid background */}
@@ -98,14 +98,14 @@ export default function Hero() {
 
       {/* Gradient orbs */}
       <div
-        className="absolute top-0 right-0 w-150 h-150 rounded-full pointer-events-none"
+        className="absolute top-0 right-0 w-[320px] h-80 md:w-105 md:h-105 lg:w-130 lg:h-130 rounded-full pointer-events-none"
         style={{
           background: "radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 70%)",
           transform: "translate(20%, -20%)",
         }}
       />
       <div
-        className="absolute bottom-0 left-0 w-125 h-125 rounded-full pointer-events-none"
+        className="absolute bottom-0 left-0 w-55 h-55 md:w-[320px] md:h-80 lg:w-105 lg:h-105 rounded-full pointer-events-none"
         style={{
           background: "radial-gradient(circle, rgba(236,72,153,0.06) 0%, transparent 70%)",
           transform: "translate(-20%, 20%)",
@@ -138,10 +138,10 @@ export default function Hero() {
         </motion.div>
       ))}
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Left content */}
-          <div ref={ref}>
+          <div ref={ref} className="w-full order-1">
             {/* Open to work badge */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -178,7 +178,7 @@ export default function Hero() {
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.7, delay: 3.5, ease: [0.76, 0, 0.24, 1] }}
-                className="text-5xl sm:text-6xl xl:text-7xl font-black leading-none tracking-tight"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-none tracking-tight"
                 style={{ color: "#f0f0f0" }}
               >
                 Jayrajsinh
@@ -189,7 +189,7 @@ export default function Hero() {
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.7, delay: 3.65, ease: [0.76, 0, 0.24, 1] }}
-                className="text-5xl sm:text-6xl xl:text-7xl font-black leading-none tracking-tight gradient-text"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-none tracking-tight gradient-text"
               >
                 Jadav
               </motion.h1>
@@ -200,12 +200,12 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 3.8 }}
-              className="flex items-center gap-2 mb-6"
+              className="flex items-center gap-2 mb-6 flex-wrap"
             >
-              <span className="text-lg font-medium" style={{ color: "#888" }}>
+              <span className="text-base sm:text-lg font-medium" style={{ color: "#888" }}>
                 {displayed}
               </span>
-              <span className="cursor-blink text-lg font-light" style={{ color: "#8B5CF6" }}>
+              <span className="cursor-blink text-base sm:text-lg font-light" style={{ color: "#8B5CF6" }}>
                 |
               </span>
             </motion.div>
@@ -215,7 +215,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 3.9, duration: 0.6 }}
-              className="text-base leading-relaxed mb-2 max-w-xl line-clamp-3"
+              className="text-sm sm:text-base leading-relaxed mb-2 max-w-xl"
               style={{ color: "#888" }}
             >
               {personalInfo.about.replace(/\s+/g, " ").trim().slice(0, 200)}...
@@ -266,7 +266,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 4.2, duration: 0.5 }}
-              className="grid grid-cols-4 gap-6 mb-10"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-10"
               style={{ borderTop: "1px solid #1c1c1c", paddingTop: "24px" }}
             >
               {stats.map((stat, i) => (
@@ -312,11 +312,11 @@ export default function Hero() {
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 3.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="hidden lg:block"
+            className="w-full order-2"
           >
             {/* Terminal window */}
             <div
-              className="rounded-2xl overflow-hidden shadow-2xl"
+              className="rounded-2xl overflow-hidden shadow-2xl max-w-full"
               style={{
                 border: "1px solid #1c1c1c",
                 boxShadow: "0 0 60px rgba(139,92,246,0.08)",
@@ -343,8 +343,8 @@ export default function Hero() {
 
               {/* Code content */}
               <div
-                className="p-6 font-mono text-sm"
-                style={{ backgroundColor: "#0d0d0d", minHeight: "340px" }}
+                className="p-4 sm:p-6 font-mono text-sm overflow-x-auto"
+                style={{ backgroundColor: "#0d0d0d", minHeight: "260px" }}
               >
                 {/* Line numbers + code */}
                 {codeLines.map((line, i) => (
@@ -353,7 +353,7 @@ export default function Hero() {
                     initial={{ opacity: 0, x: -8 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 3.8 + i * 0.1, duration: 0.3 }}
-                    className="flex items-start mb-1.5"
+                    className="flex items-start mb-1.5 whitespace-pre-wrap"
                   >
                     <span
                       className="select-none mr-4 text-right"
