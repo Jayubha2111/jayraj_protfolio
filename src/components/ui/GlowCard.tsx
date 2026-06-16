@@ -24,14 +24,10 @@ export default function GlowCard({
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={`relative rounded-2xl p-6 transition-all duration-300 group ${className}`}
-      style={{
-        backgroundColor: "#111111",
-        border: "1px solid #1c1c1c",
-      }}
+      className={`relative rounded-2xl p-6 transition-all duration-300 group bg-[#111] border border-[#1e1e1e] ${className}`}
       whileHover={{
         borderColor: `${glowColor}40`,
-        boxShadow: `0 0 30px ${glowColor}15, 0 0 60px ${glowColor}08`,
+        boxShadow: `0 0 30px ${glowColor}12, 0 0 60px ${glowColor}06`,
         y: -4,
       }}
     >

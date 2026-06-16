@@ -12,22 +12,13 @@ export default function ScrollProgress() {
       animate={{ opacity: progress > 2 ? 1 : 0 }}
       transition={{ duration: 0.3 }}
     >
-      <div
-        className="relative rounded-full overflow-hidden"
-        style={{ width: 2, height: 80, backgroundColor: "#1c1c1c" }}
-      >
+      <div className="relative rounded-full overflow-hidden w-[3px] h-25 bg-[#1e1e1e]">
         <motion.div
-          className="absolute top-0 left-0 right-0 rounded-full origin-top"
-          style={{
-            height: `${progress}%`,
-            background: "linear-gradient(180deg, #8B5CF6, #EC4899)",
-          }}
+          className="absolute top-0 left-0 right-0 rounded-full origin-top bg-gradient-to-b from-accent to-accent-2"
+          style={{ height: `${progress}%` }}
         />
       </div>
-      <span
-        className="text-[9px] font-mono tracking-widest rotate-90 mt-2"
-        style={{ color: "#444" }}
-      >
+      <span className="text-[9px] font-mono font-bold tracking-widest text-text-3">
         {Math.round(progress)}%
       </span>
     </motion.div>

@@ -9,7 +9,7 @@ export const personalInfo = {
   in HTML5, CSS, JavaScript, Tailwind CSS, and React.js. I have a keen interest in 
   building responsive, user-friendly web interfaces and am constantly exploring modern 
   frameworks and best practices to enhance my development approach. Currently working 
-  at Aloqa and Harich Tech, I bring real-world experience to every project I build.`,
+  at Harich Tech, I bring real-world experience to every project I build.`,
   location: "Ahmedabad, Gujarat, India",
   email: "jayrajsinhjadav261@gmail.com",
   phone: "+91 91577 83727",
@@ -36,29 +36,6 @@ export const stats = [
 export const experiences = [
   {
     id: 1,
-    role: "Software Engineer",
-    company: "Aloqa",
-    type: "Full-time",
-    location: "Ahmedabad, Gujarat, India",
-    mode: "On-site",
-    startDate: "Jan 2026",
-    endDate: "Present",
-    duration: "3 months",
-    isCurrent: true,
-    description:
-      "Working as a Software Engineer building modern web applications. Contributing to frontend architecture, component design, and performance optimization.",
-    responsibilities: [
-      "Building responsive UI components using React.js and Tailwind CSS",
-      "Collaborating with design and backend teams for feature development",
-      "Implementing modern frontend best practices and coding standards",
-      "Performance optimization and cross-browser compatibility testing",
-    ],
-    techStack: ["React.js", "JavaScript", "Tailwind CSS", "HTML5", "CSS3"],
-    logo: "/images/aloqa-logo.png",
-    color: "#0066FF",
-  },
-  {
-    id: 2,
     role: "Software Engineer",
     company: "Harich Tech",
     type: "Full-time",
@@ -105,22 +82,22 @@ export const education = [
 
 export const skills = {
   languages: [
-    { name: "JavaScript", level: 88, icon: "⚡" },
-    { name: "TypeScript", level: 72, icon: "🔷" },
-    { name: "HTML5", level: 95, icon: "🌐" },
-    { name: "CSS3", level: 90, icon: "🎨" },
+    { name: "JavaScript", level: 88, icon: "Zap" },
+    { name: "TypeScript", level: 72, icon: "Hexagon" },
+    { name: "HTML5", level: 95, icon: "Globe" },
+    { name: "CSS3", level: 90, icon: "Palette" },
   ],
   frameworks: [
-    { name: "React.js", level: 85, icon: "⚛️" },
-    { name: "Next.js", level: 75, icon: "▲" },
-    { name: "Tailwind CSS", level: 92, icon: "🌊" },
+    { name: "React.js", level: 85, icon: "Atom" },
+    { name: "Next.js", level: 75, icon: "Triangle" },
+    { name: "Tailwind CSS", level: 92, icon: "Wind" },
   ],
   tools: [
-    { name: "Git & GitHub", level: 82, icon: "🔧" },
-    { name: "VS Code", level: 95, icon: "💻" },
-    { name: "Figma", level: 65, icon: "🎯" },
-    { name: "Postman", level: 70, icon: "📮" },
-    { name: "npm/yarn", level: 85, icon: "📦" },
+    { name: "Git & GitHub", level: 82, icon: "GitBranch" },
+    { name: "VS Code", level: 95, icon: "Monitor" },
+    { name: "Figma", level: 65, icon: "Target" },
+    { name: "Postman", level: 70, icon: "Mail" },
+    { name: "npm/yarn", level: 85, icon: "Package" },
   ],
   concepts: [
     "Responsive Design",
@@ -246,17 +223,9 @@ export const projects = [
 ];
 
 export const testimonials = [
+
   {
     id: 1,
-    name: "Colleague at Aloqa",
-    role: "Senior Developer",
-    company: "Aloqa",
-    avatar: "/images/testimonials/t1.jpg",
-    text: "Jayrajsinh is a dedicated and quick learner. He picks up new concepts fast and delivers clean, well-structured code. A great team player who always brings positive energy.",
-    rating: 5,
-  },
-  {
-    id: 2,
     name: "Team Lead",
     role: "Tech Lead",
     company: "Harich Tech",
@@ -265,7 +234,7 @@ export const testimonials = [
     rating: 5,
   },
   {
-    id: 3,
+    id: 2 ,
     name: "University Professor",
     role: "Faculty",
     company: "LJ University",

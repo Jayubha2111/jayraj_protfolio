@@ -13,11 +13,8 @@ export default function SectionWrapper({ children, id, className = "" }: Section
   const isInView = useInView(ref, { once: true, margin: "-10% 0px -10% 0px" });
 
   return (
-    <section
-      ref={ref}
-      id={id}
-      className={`relative min-h-screen flex items-center py-12 lg:py-20 ${className}`}
-    >
+    <section ref={ref} id={id}
+      className={`relative min-h-screen flex items-center py-12 sm:py-16 lg:py-24 ${className}`}>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}

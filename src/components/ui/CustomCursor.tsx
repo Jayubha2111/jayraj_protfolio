@@ -14,9 +14,7 @@ export default function CustomCursor() {
     const handleMouseLeave = () => setIsVisible(false);
 
     const addListeners = () => {
-      const interactives = document.querySelectorAll(
-        "a, button, [data-cursor]"
-      );
+      const interactives = document.querySelectorAll("a, button, [data-cursor]");
       interactives.forEach((el) => {
         el.addEventListener("mouseenter", () => {
           setHovering(true);
@@ -33,7 +31,6 @@ export default function CustomCursor() {
     document.addEventListener("mouseenter", handleMouseEnter);
     document.addEventListener("mouseleave", handleMouseLeave);
 
-    // Use MutationObserver to handle dynamically added elements
     const observer = new MutationObserver(addListeners);
     observer.observe(document.body, { childList: true, subtree: true });
     addListeners();
@@ -47,25 +44,16 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Dot */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-10000 rounded-full"
-        style={{
-          width: 6,
-          height: 6,
-          backgroundColor: "#8B5CF6",
-          mixBlendMode: "difference",
-        }}
+        className="fixed top-0 left-0 pointer-events-none z-10000 rounded-full w-1.5 h-1.5 bg-accent"
+        style={{ mixBlendMode: "difference" }}
         animate={{ x: x - 3, y: y - 3, opacity: isVisible ? 1 : 0 }}
         transition={{ type: "tween", duration: 0 }}
       />
 
-      {/* Ring */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-9999 rounded-full flex items-center justify-center"
+        className={`fixed top-0 left-0 pointer-events-none z-9999 rounded-full flex items-center justify-center w-11 h-11 ${hovering ? "bg-accent-glow-2" : ""}`}
         style={{
-          width: 44,
-          height: 44,
           border: `1.5px solid ${hovering ? "transparent" : "#8B5CF6"}`,
           backgroundColor: hovering ? "rgba(139,92,246,0.15)" : "transparent",
         }}

@@ -10,13 +10,11 @@ interface TechBadgeProps {
 export default function TechBadge({ label, color = "#8B5CF6", size = "md" }: TechBadgeProps) {
   return (
     <motion.span
-      className="inline-flex items-center rounded-full font-medium tracking-wide"
+      className={`inline-flex items-center rounded-xl font-semibold tracking-wide ${size === "sm" ? "text-[10px] px-[10px] py-[3px]" : "text-[11px] px-3 py-1"}`}
       style={{
-        fontSize: size === "sm" ? "10px" : "11px",
-        padding: size === "sm" ? "2px 8px" : "3px 10px",
-        backgroundColor: `${color}18`,
+        backgroundColor: `${color}12`,
         color: color,
-        border: `1px solid ${color}35`,
+        border: `1px solid ${color}25`,
       }}
       whileHover={{ scale: 1.05 }}
     >

@@ -24,22 +24,15 @@ export default function MagneticButton({
 }: MagneticButtonProps) {
   const ref = useMagneticEffect(0.25) as React.RefObject<HTMLElement>;
 
-  const baseStyles = "relative inline-flex items-center justify-center gap-2 px-7 py-3 text-sm font-semibold rounded-full transition-all duration-200 overflow-hidden";
-  const primaryStyles = "text-[#050505]";
-  const outlineStyles = "border text-[#f0f0f0]";
+  const baseStyles = "relative inline-flex items-center justify-center gap-2 px-7 py-3 text-sm font-bold rounded-xl transition-all duration-200 overflow-hidden";
 
   const content = (
     <motion.span
       ref={ref as React.RefObject<HTMLSpanElement>}
-      className={`${baseStyles} ${variant === "primary" ? primaryStyles : outlineStyles} ${className}`}
-      style={
-        variant === "primary"
-          ? { backgroundColor: "#8B5CF6" }
-          : { borderColor: "#1c1c1c", backgroundColor: "transparent" }
-      }
+      className={`${baseStyles} ${className} ${variant === "primary" ? "bg-gradient-to-br from-accent to-accent-2 text-white" : "border border-[#1e1e1e] text-text bg-transparent"}`}
       whileHover={
         variant === "primary"
-          ? { boxShadow: "0 0 30px rgba(139,92,246,0.35)" }
+          ? { boxShadow: "0 0 30px rgba(139,92,246,0.3)" }
           : { borderColor: "rgba(139,92,246,0.4)", color: "#8B5CF6" }
       }
       whileTap={{ scale: 0.97 }}

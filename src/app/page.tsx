@@ -20,7 +20,7 @@ export default function Home() {
       <CustomCursor />
       <ScrollProgress />
       <Navbar />
-      <main style={{ backgroundColor: "#050505" }}>
+      <main className="bg-bg">
         <Hero />
         <About />
         <Experience />

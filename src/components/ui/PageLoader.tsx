@@ -1,5 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
+import { Check } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function PageLoader() {
@@ -10,7 +11,7 @@ export default function PageLoader() {
   const lines = [
     "> Initializing Jayrajsinh.dev...",
     "> Loading portfolio...",
-    "> Ready. ✓",
+    '> Ready.',
   ];
 
   useEffect(() => {
@@ -20,7 +21,6 @@ export default function PageLoader() {
     timers.push(setTimeout(() => setPhase(2), 1200));
     timers.push(setTimeout(() => setPhase(3), 2000));
 
-    // Progress bar
     let p = 0;
     const interval = setInterval(() => {
       p += 2;
@@ -40,34 +40,29 @@ export default function PageLoader() {
     <AnimatePresence>
       {!done && (
         <motion.div
-          className="fixed inset-0 z-9999 flex flex-col items-center justify-center"
-          style={{ backgroundColor: "#050505" }}
+          className="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-bg"
           exit={{ y: "-100%", transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] } }}
         >
-          {/* Terminal window */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
             className="w-full max-w-lg mx-4"
           >
-            {/* Terminal bar */}
             <div
-              className="rounded-t-xl px-4 py-3 flex items-center gap-2"
-              style={{ backgroundColor: "#1a1a1a", borderBottom: "1px solid #2a2a2a" }}
+              className="rounded-t-xl px-4 py-3 flex items-center gap-2 bg-[#161616] border-b border-border-2"
             >
               <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "#FF5F57" }} />
               <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "#FFBD2E" }} />
               <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "#28C840" }} />
-              <span className="ml-3 text-xs" style={{ color: "#666" }}>
+              <span className="ml-3 text-xs font-mono" style={{ color: "#666" }}>
                 jayrajsinh.dev — terminal
               </span>
             </div>
 
-            {/* Terminal body */}
             <div
-              className="rounded-b-xl p-6 font-mono"
-              style={{ backgroundColor: "#0d0d0d", minHeight: "160px" }}
+              className="rounded-b-xl p-6 font-mono bg-bg-card"
+              style={{ minHeight: "160px" }}
             >
               {lines.slice(0, phase).map((line, i) => (
                 <motion.div
@@ -75,40 +70,30 @@ export default function PageLoader() {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="mb-2 text-sm"
-                  style={{
-                    color: i === 2 ? "#8B5CF6" : i === 0 ? "#888" : "#c0c0c0",
-                  }}
+                  className={`mb-2 text-sm flex items-center gap-1.5 ${i === 2 ? "text-accent" : i === 0 ? "text-muted" : "text-[#c0c0c0]"}`}
                 >
+                  {i === 2 && <Check size={12} />}
                   {line}
                 </motion.div>
               ))}
               {phase < 3 && (
-                <span className="text-sm cursor-blink" style={{ color: "#8B5CF6" }}>
+                <span className="text-sm cursor-blink text-accent">
                   █
                 </span>
               )}
             </div>
           </motion.div>
 
-          {/* Progress bar */}
-          <div
-            className="mt-8 w-full max-w-lg mx-4 rounded-full overflow-hidden"
-            style={{ height: "2px", backgroundColor: "#1a1a1a" }}
-          >
+          <div className="mt-8 w-full max-w-lg mx-4 rounded-full overflow-hidden h-[3px] bg-border">
             <motion.div
-              className="h-full rounded-full"
-              style={{
-                width: `${progress}%`,
-                background: "linear-gradient(135deg, #8B5CF6, #EC4899)",
-              }}
+              className="h-full rounded-full bg-gradient-to-br from-accent to-accent-2"
+              style={{ width: `${progress}%` }}
               transition={{ duration: 0.05 }}
             />
           </div>
 
           <motion.p
-            className="mt-3 text-xs font-mono"
-            style={{ color: "#444" }}
+            className="mt-3 text-xs font-mono font-semibold gradient-text"
           >
             {progress}%
           </motion.p>
